@@ -33,9 +33,9 @@ public class CashRegister
         _products.Clear();
     }
 
-    public string? PrintCheck()
+    public string PrintCheck()
     {
-        if (_checks.Any())
+        if (_checks.Any() && _checks.Peek().Products.Any())
         {
             var check = _checks.Dequeue();
             StringBuilder checkView = new StringBuilder();
@@ -51,7 +51,7 @@ public class CashRegister
             checkView.Append($"Contacts:\n{Producer.GetContacts()}");
             return checkView.ToString();
         }
-        return null;
+        return string.Empty;
     }
     
     private readonly List<Product> _products = new List<Product>();
