@@ -17,6 +17,8 @@ public class CashRegister
 
     public void AddProduct(Product product)
     {
+        if (product is null)
+            throw new ArgumentNullException(nameof(product), "Product cannot be null");
         _products.Add(product);
     }
 
